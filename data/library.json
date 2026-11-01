@@ -1,20 +1,22 @@
 [
   {
-    "id": "Alvida-Alvida",
-    "title": "Dar-E-Nijaat | Alvida Alvida",
-    "source": "Online",
+    "id": "youtube-cX5YhkapzVk",
+    "title": "Alvida Alvida",
+    "source": "youtube",
+    "videoId": "cX5YhkapzVk",
     "url": "https://www.youtube.com/watch?v=cX5YhkapzVk",
     "thumbnail": "https://i.ytimg.com/vi/cX5YhkapzVk/hqdefault.jpg",
-    "mimeType": "video/mp4",
-    "duration": 241
+    "mimeType": "video/youtube",
+    "duration": null
   },
   {
-    "id": "Mujhse-Kyun-Bair-Kiya",
+    "id": "youtube-b1Cchyj6bZw",
     "title": "Mujhse Kyun Bair Kiya",
-    "source": "Online",
+    "source": "youtube",
+    "videoId": "b1Cchyj6bZw",
     "url": "https://www.youtube.com/watch?v=b1Cchyj6bZw",
     "thumbnail": "https://i.ytimg.com/vi/b1Cchyj6bZw/hqdefault.jpg",
-    "mimeType": "video/mp4",
-    "duration": 248
+    "mimeType": "video/youtube",
+    "duration": null
   }
 ]
