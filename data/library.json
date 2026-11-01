@@ -1,0 +1,65 @@
+[
+  {
+    "id": "bundled-sample-clip",
+    "title": "Sample clip (bundled with the site)",
+    "source": "bundled",
+    "url": "./assets/videos/sample-clip.webm",
+    "thumbnail": "./assets/thumbs/sample-clip.jpg",
+    "mimeType": "video/webm",
+    "duration": 6
+  },
+  {
+    "id": "bundled-big-buck-bunny",
+    "title": "Big Buck Bunny",
+    "source": "bundled",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+    "mimeType": "video/mp4",
+    "duration": 596
+  },
+  {
+    "id": "bundled-elephants-dream",
+    "title": "Elephants Dream",
+    "source": "bundled",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg",
+    "mimeType": "video/mp4",
+    "duration": 653
+  },
+  {
+    "id": "bundled-sintel",
+    "title": "Sintel",
+    "source": "bundled",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/Sintel.jpg",
+    "mimeType": "video/mp4",
+    "duration": 888
+  },
+  {
+    "id": "bundled-tears-of-steel",
+    "title": "Tears of Steel",
+    "source": "bundled",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/TearsOfSteel.jpg",
+    "mimeType": "video/mp4",
+    "duration": 734
+  },
+  {
+    "id": "bundled-for-bigger-blazes",
+    "title": "For Bigger Blazes",
+    "source": "bundled",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+    "mimeType": "video/mp4",
+    "duration": 15
+  },
+  {
+    "id": "bundled-for-bigger-fun",
+    "title": "For Bigger Fun",
+    "source": "bundled",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg",
+    "mimeType": "video/mp4",
+    "duration": 60
+  }
+]
