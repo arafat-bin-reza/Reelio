@@ -1,65 +1,20 @@
 [
   {
-    "id": "bundled-sample-clip",
-    "title": "Sample clip (bundled with the site)",
-    "source": "bundled",
-    "url": "./assets/videos/sample-clip.webm",
-    "thumbnail": "./assets/thumbs/sample-clip.jpg",
-    "mimeType": "video/webm",
-    "duration": 6
+    "id": "Alvida-Alvida",
+    "title": "Dar-E-Nijaat | Alvida Alvida",
+    "source": "Online",
+    "url": "https://www.youtube.com/watch?v=cX5YhkapzVk",
+    "thumbnail": "https://i.ytimg.com/vi/cX5YhkapzVk/hqdefault.jpg",
+    "mimeType": "video/mp4",
+    "duration": 241
   },
   {
-    "id": "bundled-big-buck-bunny",
-    "title": "Big Buck Bunny",
-    "source": "bundled",
-    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+    "id": "Mujhse-Kyun-Bair-Kiya",
+    "title": "Mujhse Kyun Bair Kiya",
+    "source": "Online",
+    "url": "https://www.youtube.com/watch?v=b1Cchyj6bZw",
+    "thumbnail": "https://i.ytimg.com/vi/b1Cchyj6bZw/hqdefault.jpg",
     "mimeType": "video/mp4",
-    "duration": 596
-  },
-  {
-    "id": "bundled-elephants-dream",
-    "title": "Elephants Dream",
-    "source": "bundled",
-    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg",
-    "mimeType": "video/mp4",
-    "duration": 653
-  },
-  {
-    "id": "bundled-sintel",
-    "title": "Sintel",
-    "source": "bundled",
-    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/Sintel.jpg",
-    "mimeType": "video/mp4",
-    "duration": 888
-  },
-  {
-    "id": "bundled-tears-of-steel",
-    "title": "Tears of Steel",
-    "source": "bundled",
-    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/TearsOfSteel.jpg",
-    "mimeType": "video/mp4",
-    "duration": 734
-  },
-  {
-    "id": "bundled-for-bigger-blazes",
-    "title": "For Bigger Blazes",
-    "source": "bundled",
-    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
-    "mimeType": "video/mp4",
-    "duration": 15
-  },
-  {
-    "id": "bundled-for-bigger-fun",
-    "title": "For Bigger Fun",
-    "source": "bundled",
-    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    "thumbnail": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg",
-    "mimeType": "video/mp4",
-    "duration": 60
+    "duration": 248
   }
 ]
