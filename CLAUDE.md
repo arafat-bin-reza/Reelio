@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Reelio is a static, dependency-free video library and player: plain HTML, CSS and browser-native ES modules. There is no build step, no package.json, no linter and no test suite. Everything the user adds is stored client-side (IndexedDB + localStorage); GitHub Pages serves the files as-is.
+Reelio is a static, dependency-free video library and player: plain HTML, CSS and browser-native ES modules. There is no build step, no package.json, no linter and no test suite. Everything the user adds is stored client-side (IndexedDB + localStorage); GitHub Pages serves the files as-is. `business_document.md` is a prose business overview of the product, not a spec; the code is the source of truth.
 
 ## Running locally
 
@@ -41,13 +41,15 @@ The `source` field drives badges/filtering in the library; the player ignores it
 - `js/db.js` is the only module that talks to IndexedDB. All ops go through a single `run(mode, op)` transaction helper. `updateVideo(id, patch)` is a read-merge-put.
 - `js/storage.js` is the only module that talks to localStorage (keys prefixed `vp:`): player settings, last video id, and the set of seeded ids.
 - `js/library.js` holds in-memory library state (`state.videos`, query/source/sort), renders the grid with `innerHTML` templates (all user strings go through `escapeHtml`), and uses event delegation on the grid for play/rename/delete. `refreshLibrary()` re-reads the DB and must be called after any DB write made elsewhere; `getVideoById` reads this cache, not the DB.
-- `js/player.js` is a singleton (`current` record, module-level `els`). It persists `lastPosition` (throttled) and `duration` back to the DB while playing and reports close via `onClose`, which app.js uses to clear the hash and refresh the library.
-- `js/upload.js` and `js/online.js` each build a record and insert it with `addVideo`, then call `onAdded` (= `refreshLibrary`). Both use `js/media.js`'s `probeMedia()` (a hidden `<video>` + canvas) to obtain duration/thumbnail. `online.js` also exports `parseVideoUrl`/`embedUrl`, which `player.js` imports, so `online.js` must stay free of player imports to avoid a cycle.
+- `js/player.js` is a singleton (`current` record, module-level `els`). It persists `lastPosition` (throttled to every 5 s, never for embeds) and a newly discovered `duration` back to the DB while playing, resumes only when the saved position is more than 5 s from either end, and reports close via `onClose`, which app.js uses to clear the hash and refresh the library. Both `player.js` and `media.js` special-case `duration === Infinity` (MediaRecorder WebM) by seeking to a huge time and waiting for `durationchange`.
+- `js/upload.js` and `js/online.js` each build a record and insert it with `addVideo`, then call `onAdded` (= `refreshLibrary`). Both use `js/media.js`'s `probeMedia()` (a hidden `<video>` + canvas; always resolves, never rejects) to obtain duration/thumbnail. For direct online links it is tried with `crossOrigin` first and retried without on error, so a thumbnail only exists when the host sends CORS headers. `online.js` also exports `parseVideoUrl`/`embedUrl`/`embedThumbnail`, which `player.js` and `app.js` import, so `online.js` must stay free of player/app imports to avoid a cycle.
 - `js/ui.js` provides toasts and promise-based `confirmDialog`/`promptDialog` built on `<dialog>`; `js/util.js` is pure helpers.
 
 ### Bundled video seeding
 
-`data/library.json` (an array; currently empty) is fetched on every load. Each entry is inserted once per browser: ids are recorded in `vp:seededIds` even if they already existed, so user deletions of bundled videos stick and re-adding requires a new `id`. Changing an entry's `url`/`title` for an id that was already seeded will NOT update existing users' libraries. Entry fields: `id`, `title`, `url` (required); `thumbnail`, `duration` (seconds), `mimeType` optional. `url` may be a direct file (absolute or relative) or a YouTube/Vimeo link; the seeder runs it through `parseVideoUrl` and sets `embed` for the latter, so the record plays in the iframe while keeping `source: 'bundled'`.
+`data/library.json` is the file that changes most often (git history is mostly "Updated the playlist"). It is an array fetched on every load by `seedLibrary()` in `app.js`. Each entry is inserted once per browser: ids are recorded in `vp:seededIds` even if they already existed, so user deletions of bundled videos stick and re-adding requires a new `id`. Changing an entry's `url`/`title` for an id that was already seeded will NOT update existing users' libraries; to test a seed change locally, clear both IndexedDB and the `vp:seededIds` key.
+
+Entry fields the seeder reads: `id`, `title`, `url` (required); `thumbnail`, `duration` (seconds), `mimeType` optional. Any other keys (the current entries carry `source: "Online"` and `videoId`) are ignored: the record's `source` is always `'bundled'`, and `embed`/`thumbnail` are derived from `url` via `parseVideoUrl`/`embedThumbnail`. `url` may be a direct file (absolute or relative) or a YouTube/Vimeo link; embed links play in the iframe while keeping the `bundled` badge. Existing ids follow `youtube-<videoId>`; keep that convention and never reuse an id for a different video. JSON order is preserved as "oldest first" by faking `addedAt`.
 
 ### Styling
 

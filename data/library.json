@@ -5,7 +5,7 @@
     "source": "Online",
     "videoId": "cX5YhkapzVk",
     "url": "https://www.youtube.com/watch?v=cX5YhkapzVk",
-    "thumbnail": "https://i.ytimg.com/vi/cX5YhkapzVk/hqdefault.jpg",
+    "thumbnail": "https://img.youtube.com/vi/cX5YhkapzVk/maxresdefault.jpg",
     "mimeType": "video/mp4",
     "duration": 241
   },
@@ -15,8 +15,28 @@
     "source": "Online",
     "videoId": "b1Cchyj6bZw",
     "url": "https://www.youtube.com/watch?v=b1Cchyj6bZw",
-    "thumbnail": "https://i.ytimg.com/vi/b1Cchyj6bZw/hqdefault.jpg",
+    "thumbnail": "https://img.youtube.com/vi/b1Cchyj6bZw/maxresdefault.jpg",
     "mimeType": "video/mp4",
     "duration": 248
+  },
+  {
+    "id": "youtube-1g0J6k5V7xE",
+    "title": "Tere Bina Zindagi Se",
+    "source": "Online",
+    "videoId": "1g0J6k5V7xE",
+    "url": "https://youtu.be/OsXUsTZRpZA?list=RDOsXUsTZRpZA",
+    "thumbnail": "https://img.youtube.com/vi/OsXUsTZRpZA/maxresdefault.jpg",
+    "mimeType": "video/mp4",
+    "duration": 274
+  },
+  {
+    "id": "youtube-OsXUsTZRpZA",
+    "title": "Majboor ",
+    "source": "Online",
+    "videoId": "OsXUsTZRpZA",
+    "url": "https://youtu.be/zaFGQEIcetM?list=RDzaFGQEIcetM",
+    "thumbnail": "https://img.youtube.com/vi/zaFGQEIcetM/maxresdefault.jpg",
+    "mimeType": "video/mp4",
+    "duration": 158
   }
 ]
