@@ -8,7 +8,7 @@ Reelio is a lightweight video player built with HTML, CSS, and JavaScript. Uploa
 - **Custom player**: play/pause, seek with buffered indicator, volume, playback speed, picture‑in‑picture, fullscreen, keyboard shortcuts, and resume‑where‑you‑left‑off.
 - **Upload from your device**: file picker or drag‑and‑drop. Files are stored as Blobs in the browser's IndexedDB and never leave your machine.
 - **Add online videos by URL**: direct MP4/WebM links play in the HTML5 player; YouTube and Vimeo links play in an embedded player.
-- **Bundled videos** listed in `data/library.json` appear on first visit.
+- **Bundled videos** listed in `data/library.json` appear on first visit. Entries can be local or hosted video files, or YouTube / Vimeo links.
 - Light / dark theme, storage usage meter, shareable `#video=<id>` links.
 
 ## How storage works
@@ -69,7 +69,20 @@ All asset paths are relative, so the app works from a repository sub‑path. The
 
 ## Adding your own bundled videos
 
-Edit `data/library.json`. Each entry needs a unique `id`, a `title`, a `url` (absolute, or relative like `./assets/videos/clip.mp4`) and optionally `thumbnail`, `duration` (seconds) and `mimeType`. Keep files committed to the repo small; GitHub blocks files over 100 MB.
+Edit `data/library.json`. Each entry needs a unique `id`, a `title` and a `url`, and optionally `thumbnail`, `duration` (seconds) and `mimeType`. The `url` can be:
+
+- a direct video file, absolute (`https://example.com/clip.mp4`) or relative (`./assets/videos/clip.mp4`);
+- a YouTube or Vimeo link (`https://www.youtube.com/watch?v=...`, `https://youtu.be/...`, `https://vimeo.com/...`). These play in the embedded player. YouTube thumbnails are fetched automatically; for Vimeo supply a `thumbnail` or the placeholder is shown.
+
+```json
+[
+  { "id": "intro", "title": "Welcome", "url": "./assets/videos/intro.mp4", "duration": 42 },
+  { "id": "yt-tour", "title": "Product tour", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+  { "id": "vimeo-talk", "title": "Keynote", "url": "https://vimeo.com/76979871", "thumbnail": "https://example.com/keynote.jpg" }
+]
+```
+
+Entries are added to a visitor's library once per browser, keyed by `id`. Changing an existing entry will not update libraries that already contain it; give it a new `id` instead. Keep files committed to the repo small; GitHub blocks files over 100 MB.
 
 ## Keyboard shortcuts
 

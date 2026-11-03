@@ -137,7 +137,7 @@ function visibleVideos() {
 
 function metaLine(video) {
   const parts = [];
-  if (video.source === 'online' && video.embed) parts.push(video.embed.provider === 'youtube' ? 'YouTube' : 'Vimeo');
+  if (video.embed) parts.push(video.embed.provider === 'youtube' ? 'YouTube' : 'Vimeo');
   if (video.size) parts.push(formatBytes(video.size));
   if (video.addedAt) parts.push(formatDate(video.addedAt));
   return parts.join(' · ');
