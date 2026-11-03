@@ -1,10 +1,10 @@
-// Video player: custom controls over a <video>, or an <iframe> for YouTube / Vimeo embeds.
+// Video player: custom controls over a <video>, or an <iframe> for embedded providers (YouTube, Vimeo, TikTok, ...).
 
 import { updateVideo } from './db.js';
 import { loadSettings, saveSettings, setLastVideoId } from './storage.js';
 import { formatTime, throttle } from './util.js';
 import { toast } from './ui.js';
-import { embedUrl } from './online.js';
+import { embedUrl, isPortraitEmbed } from './online.js';
 
 const ICON = {
   play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',
@@ -120,13 +120,14 @@ export async function openVideo(record) {
 
   if (record.embed) {
     stage.classList.add('mode-embed');
+    stage.classList.toggle('mode-portrait', isPortraitEmbed(record.embed));
     stage.classList.remove('controls-hidden');
     video.hidden = true;
     iframe.hidden = false;
     iframe.src = embedUrl(record.embed, { autoplay: true });
     els.hint.hidden = true;
   } else {
-    stage.classList.remove('mode-embed');
+    stage.classList.remove('mode-embed', 'mode-portrait');
     iframe.hidden = true;
     iframe.src = '';
     video.hidden = false;
@@ -411,7 +412,7 @@ function cleanup({ keepOpen = false } = {}) {
   video.load();
   iframe.src = '';
   iframe.hidden = true;
-  stage.classList.remove('controls-hidden', 'mode-embed');
+  stage.classList.remove('controls-hidden', 'mode-embed', 'mode-portrait');
 
   if (objectUrl) {
     URL.revokeObjectURL(objectUrl);

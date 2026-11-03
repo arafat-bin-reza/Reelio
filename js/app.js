@@ -5,7 +5,7 @@ import { loadSettings, saveSettings, getSeededIds, addSeededIds } from './storag
 import { initLibrary, refreshLibrary, getVideoById } from './library.js';
 import { initPlayer, openVideo, closePlayer, isOpen as playerIsOpen } from './player.js';
 import { initUpload } from './upload.js';
-import { initUrlDialog, parseVideoUrl, embedThumbnail } from './online.js';
+import { initUrlDialog, parseVideoUrl, makeEmbed, embedThumbnail } from './online.js';
 import { toast, closeOnBackdropClick } from './ui.js';
 import { formatBytes, $ } from './util.js';
 
@@ -51,9 +51,8 @@ async function seedLibrary() {
     if (!entry?.id || !entry.url || seeded.has(entry.id) || existing.has(entry.id)) continue;
 
     // Seed entries may be direct files (absolute or relative like ./assets/videos/clip.mp4)
-    // or YouTube / Vimeo links. Embed links play in the iframe player like "online" videos do.
-    const parsed = parseVideoUrl(entry.url);
-    const embed = parsed?.kind === 'embed' ? { provider: parsed.provider, videoId: parsed.videoId } : null;
+    // or links to any supported embed provider. Embed links play in the iframe player like "online" videos do.
+    const embed = makeEmbed(parseVideoUrl(entry.url));
 
     const record = {
       id: entry.id,

@@ -47,6 +47,12 @@
 }
 .player-stage:fullscreen { border-radius: 0; max-height: none; aspect-ratio: auto; }
 .player-stage.mode-embed .player-controls { display: none; }
+/* Vertical embeds (TikTok, Instagram): a centred 9:16 box capped by the viewport height. */
+.player-stage.mode-portrait {
+  aspect-ratio: 9 / 16;
+  width: min(100%, calc((100vh - 150px) * 9 / 16));
+  margin-inline: auto;
+}
 .player-stage.controls-hidden { cursor: none; }
 .player-stage.controls-hidden .player-controls { opacity: 0; pointer-events: none; }
 

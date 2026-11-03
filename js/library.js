@@ -3,6 +3,7 @@
 import { getAllVideos, deleteVideo as dbDeleteVideo, updateVideo } from './db.js';
 import { formatTime, formatBytes, formatDate, escapeHtml, debounce } from './util.js';
 import { toast, confirmDialog, promptDialog } from './ui.js';
+import { providerLabel } from './online.js';
 
 const PLACEHOLDER = './assets/thumbs/placeholder.svg';
 const SOURCE_LABEL = { bundled: 'Bundled', upload: 'Uploaded', online: 'Online' };
@@ -137,7 +138,7 @@ function visibleVideos() {
 
 function metaLine(video) {
   const parts = [];
-  if (video.embed) parts.push(video.embed.provider === 'youtube' ? 'YouTube' : 'Vimeo');
+  if (video.embed) parts.push(providerLabel(video.embed.provider));
   if (video.size) parts.push(formatBytes(video.size));
   if (video.addedAt) parts.push(formatDate(video.addedAt));
   return parts.join(' · ');

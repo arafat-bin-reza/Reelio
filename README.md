@@ -7,8 +7,8 @@ Reelio is a lightweight video player built with HTML, CSS, and JavaScript. Uploa
 - **Library grid** with thumbnails, duration, source badges, search, filter and sort.
 - **Custom player**: play/pause, seek with buffered indicator, volume, playback speed, picture‑in‑picture, fullscreen, keyboard shortcuts, and resume‑where‑you‑left‑off.
 - **Upload from your device**: file picker or drag‑and‑drop. Files are stored as Blobs in the browser's IndexedDB and never leave your machine.
-- **Add online videos by URL**: direct MP4/WebM links play in the HTML5 player; YouTube and Vimeo links play in an embedded player.
-- **Bundled videos** listed in `data/library.json` appear on first visit. Entries can be local or hosted video files, or YouTube / Vimeo links.
+- **Add online videos by URL**: direct MP4/WebM links play in the HTML5 player; YouTube, Vimeo, TikTok, Facebook, Instagram and Google Drive links play in an embedded player (public content only).
+- **Bundled videos** listed in `data/library.json` appear on first visit. Entries can be local or hosted video files, or links to any of the embed providers above.
 - Light / dark theme, storage usage meter, shareable `#video=<id>` links.
 
 ## How storage works
@@ -18,7 +18,7 @@ GitHub Pages only serves static files, so there is no server to upload to. Every
 | Source   | What is stored                              | Where                 |
 |----------|---------------------------------------------|-----------------------|
 | Bundled  | URL + metadata from `data/library.json`      | IndexedDB             |
-| Online   | URL or YouTube/Vimeo id + metadata           | IndexedDB             |
+| Online   | URL or provider video id + metadata          | IndexedDB             |
 | Uploaded | The video file itself (Blob) + thumbnail     | IndexedDB             |
 | Settings | Volume, mute, speed, theme, last video       | localStorage          |
 
@@ -73,6 +73,7 @@ Edit `data/library.json`. Each entry needs a unique `id`, a `title` and a `url`,
 
 - a direct video file, absolute (`https://example.com/clip.mp4`) or relative (`./assets/videos/clip.mp4`);
 - a YouTube or Vimeo link (`https://www.youtube.com/watch?v=...`, `https://youtu.be/...`, `https://vimeo.com/...`). These play in the embedded player. YouTube thumbnails are fetched automatically; for Vimeo supply a `thumbnail` or the placeholder is shown.
+- a TikTok (`https://www.tiktok.com/@user/video/<id>`), Facebook (`.../videos/<id>`, `watch/?v=<id>`, `reel/<id>`), Instagram (`/p/<code>/`, `/reel/<code>/`) or Google Drive (`/file/d/<id>/view`) link. These also play in the embedded player and only work for publicly shared content. Google Drive thumbnails are fetched automatically; for the others supply a `thumbnail` or the placeholder is shown. Short share links (`vm.tiktok.com`, `fb.watch`) are not supported; paste the full URL.
 
 ```json
 [
